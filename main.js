@@ -1,40 +1,48 @@
-/**
- * ProWheels Website Main Script - V2
- * ------------------------------------
- * This script adds advanced interactivity for a modern user experience.
- *
- * Features:
- * 1. Hero Slideshow: Manages the main banner rotation.
- * 2. Sticky Header: Shrinks header on scroll.
- * 3. Custom Cursor: Adds a premium follower cursor.
- * 4. Scroll Effects: Manages back-to-top button and on-scroll animations.
- * 5. Theme Management: Handles dark/light mode.
- * 6. Event Initializers: Runs all site scripts.
- */
-
 document.addEventListener('DOMContentLoaded', () => {
 
     /**
-     * 1. Hero Slideshow
-     * Re-implements and controls the automatic hero banner slideshow.
+     * 1. Theme Management (Dark Mode Toggle)
+     * Manages the light/dark theme based on user preference and local storage.
+     */
+    const initThemeToggle = () => {
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        if (!toggleButton) return;
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        let currentTheme = localStorage.getItem('prowheels-theme') || (prefersDark ? 'dark' : 'light');
+
+        const applyTheme = (theme) => {
+            document.body.classList.toggle('dark-mode', theme === 'dark');
+        };
+
+        applyTheme(currentTheme);
+
+        toggleButton.addEventListener('click', () => {
+            currentTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+            localStorage.setItem('prowheels-theme', currentTheme);
+            applyTheme(currentTheme);
+        });
+    };
+
+    /**
+     * 2. Hero Slideshow (Homepage Only)
+     * Controls the fading slideshow in the hero section of the homepage.
      */
     const initHeroSlider = () => {
-        const slidesData = [
-            { img: 'daftruck.jpg', text: 'Powerful and reliable DAF Trucks from Europe — built for performance and endurance.' },
-            { img: 'massyferguson.jpg', text: 'High-quality Massey Ferguson Tractors from Japan, built for efficiency and durability.' },
-            { img: 'semitrailers.jpg', text: 'Strong and dependable Semi-Trailers designed for long-distance heavy transport.' },
-            { img: 'tyres.jpg', text: 'Premium Tyres from top brands for maximum traction and performance.' },
-        ];
-
         const slidesRoot = document.getElementById('slides');
         const dotsRoot = document.getElementById('dots');
         const heroTextEl = document.getElementById('hero-text-placeholder');
-        
         if (!slidesRoot || !dotsRoot || !heroTextEl) return;
 
+        const slidesData = [
+            { img: 'daftruck.jpg', text: 'Powerful and reliable DAF Trucks from Europe.' },
+            { img: 'masseyferguson.jpg', text: 'High-quality Massey Ferguson Tractors from Japan.' },
+            { img: 'trailer.jpg', text: 'Strong and dependable Semi-Trailers for heavy transport.' },
+            { img: 'tyres.jpg', text: 'Premium Tyres from top brands for maximum performance.' },
+        ];
+        
         let currentSlide = 0;
-        let slideElements = [];
-        let dotElements = [];
+        const slideElements = [], dotElements = [];
         let autoplayInterval = null;
 
         slidesData.forEach((slideData, i) => {
@@ -59,12 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSlide = index;
         };
 
-        const goToSlide = (index) => {
-            showSlide(index);
-            clearInterval(autoplayInterval);
-            startAutoplay();
-        };
-
         const startAutoplay = () => {
             autoplayInterval = setInterval(() => {
                 const nextIndex = (currentSlide + 1) % slideElements.length;
@@ -72,32 +74,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000);
         };
         
+        const goToSlide = (index) => {
+            showSlide(index);
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        };
+
         showSlide(0);
         startAutoplay();
     };
 
+    /**
+     * 3. Client Logo Scroller (Homepage Only)
+     * Creates the infinite scrolling banner of client logos.
+     */
+    const initClientScroller = () => {
+        const strip = document.getElementById('clients-strip');
+        if (!strip) return;
+
+        const logos = ['gpha.png', 'sapholda.png', 'movis.jpg', 'trustlink.png', 'bajfreight.png', 'tematerminal.png', 'amaristerminal.png', 'medlog.png'];
+        const allLogos = [...logos, ...logos]; // Duplicate for seamless loop
+
+        allLogos.forEach(logoSrc => {
+            const div = document.createElement('div');
+            div.className = 'client-logo';
+            const img = document.createElement('img');
+            img.src = logoSrc;
+            img.alt = logoSrc.split('.')[0];
+            img.loading = 'lazy';
+            div.appendChild(img);
+            strip.appendChild(div);
+        });
+    };
 
     /**
-     * 2. Sticky Header
-     * Adds a 'scrolled' class to the header when the user scrolls down.
+     * 4. Sticky Header
+     * Adds a class to the header when the user scrolls down.
      */
     const initStickyHeader = () => {
         const header = document.querySelector('header');
         if (!header) return;
-
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            header.classList.toggle('scrolled', window.scrollY > 50);
         }, { passive: true });
     };
 
-
     /**
-     * 3. Custom Cursor
-     * Creates a two-part cursor that follows the mouse and reacts to hovers.
+     * 5. Custom Cursor
+     * Creates a custom cursor effect that follows the mouse.
      */
     const initCustomCursor = () => {
         const cursorDot = document.createElement('div');
@@ -109,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(cursorFollower);
 
         window.addEventListener('mousemove', e => {
-            // Use requestAnimationFrame for performance
             requestAnimationFrame(() => {
                 cursorDot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
                 cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
@@ -118,91 +141,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const interactiveElements = document.querySelectorAll('a, button, .card');
         interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => cursorDot.parentElement.classList.add('cursor-grow'));
-            el.addEventListener('mouseleave', () => cursorDot.parentElement.classList.remove('cursor-grow'));
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
         });
     };
 
-
     /**
-     * 4. Scroll Effects
-     * Manages on-scroll animations and the back-to-top button.
+     * 6. Scroll Effects (Back to Top & Fade-in Animations)
+     * Manages the "back to top" button and animates elements as they scroll into view.
      */
     const initScrollEffects = () => {
-        const animatedElements = document.querySelectorAll('.card, .mv-card, .testimonial-card, .why-choose-grid > div');
-        const backToTopButton = document.createElement('button');
-        backToTopButton.className = 'back-to-top';
-        backToTopButton.innerHTML = `&#8593;`; // Up arrow
-        backToTopButton.setAttribute('aria-label', 'Go to top of page');
-        document.body.appendChild(backToTopButton);
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+            window.addEventListener('scroll', () => {
+                backToTopButton.classList.toggle('show', window.scrollY > window.innerHeight);
+            }, { passive: true });
+        }
 
-        // Intersection Observer for fade-in animations
-        if ('IntersectionObserver' in window) {
+        // Animate on Scroll
+        const animatedElements = document.querySelectorAll(
+            '.card, .mv-card, .testimonial-card, .why-choose-grid > div, details, .about-grid > div, .team-section, .advantage-grid > div, .product-intro-grid > div'
+        );
+
+        if ('IntersectionObserver' in window && animatedElements.length > 0) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
 
             animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                el.classList.add('animate-on-scroll');
                 observer.observe(el);
             });
         }
-        
-        // Scroll listener for the back-to-top button
-        window.addEventListener('scroll', () => {
-             if (window.scrollY > window.innerHeight) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        }, { passive: true });
     };
 
-
-    /**
-     * 5. Theme Management (Dark/Light Mode)
-     * Persists the user's theme choice via localStorage.
-     */
-    const initThemeToggle = () => {
-        const toggleButton = document.getElementById('dark-mode-toggle');
-        if (!toggleButton) return;
-
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        let currentTheme = localStorage.getItem('prowheels-theme') || (prefersDark ? 'dark' : 'light');
-
-        const applyTheme = (theme) => {
-            document.body.classList.toggle('dark-mode', theme === 'dark');
-        };
-
-        applyTheme(currentTheme);
-
-        toggleButton.addEventListener('click', () => {
-            currentTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-            localStorage.setItem('prowheels-theme', currentTheme);
-            applyTheme(currentTheme);
-        });
-    };
-
-
-    /**
-     * 6. Event Initializers
-     * Runs all necessary functions to activate the site's interactivity.
-     */
+    // --- Initialize All Scripts ---
+    initThemeToggle();
     initHeroSlider();
+    initClientScroller();
     initStickyHeader();
     initCustomCursor();
     initScrollEffects();
-    initThemeToggle();
 });

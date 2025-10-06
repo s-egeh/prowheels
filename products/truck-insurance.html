@@ -7,145 +7,11 @@
     <meta name="description" content="Protect your commercial vehicles with comprehensive truck and fleet insurance solutions from ProWheels Africa. Secure your assets and ensure business continuity.">
     <link rel="icon" type="image/png" href="../favicon.png">
 
-    <style>
-        /* PROWHEELS - MASTER STYLESHEET (EMBEDDED) */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Merriweather:wght@700;900&display=swap');
+    <link rel="stylesheet" href="../style.css">
 
-        :root {
-            --yellow: #ffd200;
-            --black: #111111;
-            --light-grey: #f7f7f7;
-            --text-color: #333;
-            --card-radius: 12px;
-            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.12);
-            --font-heading: 'Merriweather', serif;
-            --font-body: 'Inter', sans-serif;
-        }
-        * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; font-family: var(--font-body); color: var(--text-color); background-color: #fff; line-height: 1.6; scroll-behavior: smooth; }
-        a { color: var(--black); text-decoration: none; transition: color 0.2s ease-in-out; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
-
-        /* Header & Navigation */
-        .topbar { background: var(--black); color: var(--yellow); padding: 8px 16px; font-size: 14px; text-align: center; }
-        .topbar a { color: #fff; font-weight: 500; }
-        header { position: sticky; top: 0; z-index: 1000; background: #ffffff; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06); transition: padding 0.4s ease, background-color 0.3s ease; }
-        header .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand img { height: 48px; width: 48px; border-radius: 6px; transition: height 0.4s ease, width 0.4s ease; }
-        .brand-name { font-weight: 800; color: var(--black); }
-        .brand-tagline { font-size: 12px; color: #666; }
-        nav ul { display: flex; gap: 24px; align-items: center; list-style: none; margin: 0; padding: 0; }
-        nav li { position: relative; }
-        nav a { font-weight: 500; position: relative; padding: 8px 0; }
-        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--yellow); transition: width 0.3s ease; }
-        nav a:hover::after { width: 100%; }
-        .dropdown { background: #fff; border-radius: 8px; box-shadow: var(--shadow); position: absolute; top: 45px; left: -16px; min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; }
-        nav li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown a { display: block; padding: 10px 12px; border-radius: 6px; }
-        .dropdown a::after { display: none; }
-        .dropdown a:hover { background: var(--light-grey); color: var(--black); }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .cta { background: var(--yellow); color: var(--black); padding: 10px 18px; border-radius: 8px; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-
-        /* Page Hero */
-        .page-hero { padding: 80px 0; background-color: var(--black); color: #fff; text-align: center; position: relative; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/insurance-hero.jpg'); background-size: cover; background-position: center; border-bottom: 4px solid var(--yellow); }
-        .page-hero h1 { font-family: var(--font-heading); font-size: 48px; color: #fff; margin: 0 0 12px; }
-        .page-hero p { font-size: 18px; color: #ccc; max-width: 600px; margin: 0 auto; }
-        
-        /* Sections, Grids & Cards */
-        .section { padding: 80px 0; }
-        .section-highlight { background-color: var(--light-grey); }
-        .section h2 { font-family: var(--font-heading); font-weight: 900; margin: 0 0 48px; text-align: center; font-size: 36px; position: relative; }
-        .section h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--yellow); margin: 12px auto 0; border-radius: 2px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        .card { background: #fff; border-radius: var(--card-radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
-        .card .body { padding: 24px; text-align: center; }
-        .card h3 { font-family: var(--font-heading); margin: 0 0 8px; font-size: 20px; }
-        
-        /* Specific Section Styles */
-        .product-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-        .product-intro-grid h2 { text-align: left; }
-        .product-intro-grid h2::after { margin: 12px 0 0; }
-        .product-intro-grid img { width: 100%; border-radius: var(--card-radius); box-shadow: var(--shadow-hover); }
-
-        /* Footer & Floating Elements */
-        .float-wa, .float-cart { position: fixed; right: 24px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-hover); z-index: 900; transition: transform 0.2s ease; }
-        .float-wa { bottom: 24px; background: var(--yellow); }
-        .float-cart { bottom: 96px; background: var(--black); color: #fff; font-size: 24px; }
-        .float-wa:hover, .float-cart:hover { transform: scale(1.1); }
-        footer { background: var(--black); color: #ccc; padding: 56px 0 40px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; align-items: start; gap: 32px; }
-        footer a { color: #ccc; font-size: 15px; }
-        footer a:hover { color: var(--yellow); }
-        footer h4 { color: #fff; font-family: var(--font-heading); margin-bottom: 16px; font-size: 18px; }
-        .footer-logo { height: 56px; margin-bottom: 8px; }
-        .footer-links div, .footer-contact div { display: flex; flex-direction: column; gap: 8px; }
-        .copyright { font-size: 12px; margin-top: 24px; opacity: 0.7; grid-column: 1 / -1; text-align: center; }
-        .footer-map a { display: block; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .footer-map a:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-        .footer-map img { display: block; width: 100%; height: auto; }
-
-        /* Dark Mode */
-        .dark-mode-toggle { background: none; border: 1px solid #ddd; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; transition: background-color 0.3s ease, border-color 0.3s ease; }
-        .dark-mode-toggle:hover { background-color: var(--light-grey); }
-        .dark-mode-toggle .moon-icon { display: none; }
-        .dark-mode-toggle .sun-icon { display: block; }
-        body.dark-mode { --light-grey: #1a1a1a; --text-color: #e0e0e0; --shadow: 0 6px 18px rgba(0, 0, 0, 0.4); --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.6); background-color: #121212; }
-        body.dark-mode .dark-mode-toggle .moon-icon { display: block; }
-        body.dark-mode .dark-mode-toggle .sun-icon { display: none; }
-        body.dark-mode header, body.dark-mode .card { background-color: #1e1e1e; }
-        body.dark-mode .brand-name, body.dark-mode a { color: #fff; }
-        body.dark-mode a:hover { color: var(--yellow); }
-        body.dark-mode .brand-tagline { color: #888; }
-        body.dark-mode .dropdown { background-color: #2a2a2a; }
-        body.dark-mode .dropdown a:hover { background-color: #333; }
-        body.dark-mode .section-highlight, body.dark-mode .page-hero { background-color: #101010; }
-        body.dark-mode footer { background-color: #0a0a0a; }
-        body.dark-mode .page-hero { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../images/insurance-hero.jpg'); }
-
-        /* Advanced JS Features Styling */
-        header.scrolled { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); padding-top: 5px; padding-bottom: 5px; }
-        header.scrolled .brand img { height: 40px; width: 40px; }
-        body.dark-mode header.scrolled { background-color: #1e1e1e; }
-        .cursor { position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.2s ease-out, opacity 0.3s ease; }
-        .cursor-dot { width: 8px; height: 8px; background-color: var(--yellow); left: -4px; top: -4px; }
-        .cursor-follower { width: 40px; height: 40px; border: 2px solid var(--yellow); left: -20px; top: -20px; transition: transform 0.4s ease-out, opacity 0.3s ease, width 0.4s ease, height 0.4s ease; }
-        body.cursor-grow .cursor-follower { transform: scale(1.5); border-color: rgba(255, 210, 0, 0.5); }
-        .back-to-top { position: fixed; bottom: 24px; right: -80px; width: 50px; height: 50px; background-color: var(--yellow); color: var(--black); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-hover); cursor: pointer; z-index: 900; opacity: 0; font-size: 24px; transition: opacity 0.4s ease, right 0.5s ease; }
-        .back-to-top.show { opacity: 1; right: 24px; }
-        .back-to-top:hover { transform: scale(1.1); }
-        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
-        /* Responsive Media Queries */
-        @media (max-width: 992px) {
-            .product-intro-grid { grid-template-columns: 1fr; }
-            .product-intro-grid img { order: -1; margin-bottom: 2rem; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .footer-about, .footer-map { grid-column: 1 / -1; }
-        }
-        @media (max-width: 768px) {
-            .section { padding: 64px 0; }
-            .section h2, .page-hero h1 { font-size: 32px; }
-            header .nav { flex-wrap: wrap; justify-content: space-between; }
-            nav { order: 3; width: 100%; margin-top: 16px; }
-            nav ul { justify-content: space-around; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-        }
-        @media (max-width: 480px) {
-            .topbar { font-size: 12px; }
-            .brand-text { display: none; }
-        }
-        @media (pointer: coarse) {
-          .cursor { display: none; }
-        }
-    </style>
 </head>
 
-<body>
+<body class="insurance-page">
     <div class="topbar">
         <div class="container">Call / WhatsApp: <a href="tel:+233540686932">+233 54 068 6932</a>   |   <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a></div>
     </div>
@@ -207,7 +73,7 @@
                         <p>We help you navigate the complexities of commercial vehicle insurance to find a policy that protects your assets, covers your liability, and ensures your business can continue to operate smoothly, no matter what happens on the road.</p>
                     </div>
                     <div>
-                        <img src="truckinsurance.jpg" alt="A shield icon protecting a commercial truck, symbolizing insurance.">
+                        <img src="../truckinsurance.jpg" alt="A shield icon protecting a commercial truck, symbolizing insurance.">
                     </div>
                 </div>
             </div>
@@ -254,7 +120,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-about">
-                    <img src="prowheels.jpg" alt="ProWheels" class="footer-logo">
+                    <img src="../prowheels.jpg" alt="ProWheels" class="footer-logo">
                     <p>Driven by Quality, Trusted for Performance. Your partner in agriculture, logistics, and transportation in Ghana.</p>
                 </div>
                 <div class="footer-links">
@@ -273,17 +139,14 @@
                         <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a>
                     </div>
                 </div>
-                <div class="footer-map">
+                 <div class="footer-map">
                     <h4>Our Location</h4>
-                   <iframe
+                    <iframe
     src="https://www.google.com/maps?q=Harbor+roundabout,+Community+1,+Tema,+Ghana&output=embed"
     width="100%" height="100%"
     style="border:0;" loading="lazy" allowfullscreen>
   </iframe>
                 </div>
-            </div>
-            <p class="copyright">© 2025 ProWheels Africa</p>
-        </div>
     </footer>
     
     <a class="float-wa" href="https://wa.me/233540686932" target="_blank" aria-label="WhatsApp">
@@ -292,81 +155,6 @@
     <a class="float-cart" href="../cart.html" aria-label="Cart">🛒</a>
     <div class="back-to-top" aria-label="Go to top of page">↑</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            /** Theme Management */
-            const initThemeToggle = () => {
-                const toggleButton = document.getElementById('dark-mode-toggle');
-                if (!toggleButton) return;
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                let currentTheme = localStorage.getItem('prowheels-theme') || (prefersDark ? 'dark' : 'light');
-                const applyTheme = (theme) => document.body.classList.toggle('dark-mode', theme === 'dark');
-                applyTheme(currentTheme);
-                toggleButton.addEventListener('click', () => {
-                    currentTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
-                    localStorage.setItem('prowheels-theme', currentTheme);
-                    applyTheme(currentTheme);
-                });
-            };
-
-            /** Sticky Header */
-            const initStickyHeader = () => {
-                const header = document.querySelector('header');
-                if (!header) return;
-                window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
-            };
-
-            /** Custom Cursor */
-            const initCustomCursor = () => {
-                const cursorDot = document.createElement('div');
-                cursorDot.className = 'cursor cursor-dot';
-                document.body.appendChild(cursorDot);
-                const cursorFollower = document.createElement('div');
-                cursorFollower.className = 'cursor cursor-follower';
-                document.body.appendChild(cursorFollower);
-                window.addEventListener('mousemove', e => {
-                    requestAnimationFrame(() => {
-                        cursorDot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-                        cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-                    });
-                });
-                const interactiveElements = document.querySelectorAll('a, button, .card');
-                interactiveElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
-                    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
-                });
-            };
-
-            /** Scroll Effects */
-            const initScrollEffects = () => {
-                const backToTopButton = document.querySelector('.back-to-top');
-                if (backToTopButton) {
-                    backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-                    window.addEventListener('scroll', () => backToTopButton.classList.toggle('show', window.scrollY > window.innerHeight), { passive: true });
-                }
-                const animatedElements = document.querySelectorAll('.card, .product-intro-grid > div');
-                if ('IntersectionObserver' in window) {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('is-visible');
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    }, { threshold: 0.1 });
-                    animatedElements.forEach(el => {
-                        el.classList.add('animate-on-scroll');
-                        observer.observe(el);
-                    });
-                }
-            };
-            
-            // --- Initialize All Scripts ---
-            initThemeToggle();
-            initStickyHeader();
-            initCustomCursor();
-            initScrollEffects();
-        });
-    </script>
+    <script src="../main.js" defer></script>
 </body>
 </html>
