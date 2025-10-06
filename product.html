@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | ProWheels</title> <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/prowheelslogo.jpg" type="image/x-icon">
+</head>
+<body class="product-page">
+    
+    <header class="main-header">...</header>
+
+    <main id="product-main-content">
+        <section id="product-hero" class="product-hero">
+            <h1 id="product-title">Loading Product...</h1>
+        </section>
+
+        <div class="container section">
+             <p style="margin-bottom: 2rem;">
+                <a href="index.html">Home</a> &gt; 
+                <a href="index.html#products">Products</a> &gt; 
+                <span id="breadcrumb-product-name">Product</span>
+            </p>
+
+            <div class="contact-grid">
+                <div>
+                    <img id="product-image" src="" alt="" style="width: 100%; border-radius: 10px;">
+                    <h2 style="margin-top: 2rem;">Product Description</h2>
+                    <p id="product-description"></p>
+                </div>
+                <div>
+                    <h3>Request a Quote</h3>
+                    <form action="https://formspree.io/f/xqaylavv" method="POST" class="contact-form">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Your Phone">
+                        <input type="text" id="form-product-interest" name="product_interest" readonly>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">...</footer>
+
+    <div class="floating-buttons">...</div>
+    
+    <script src="js/script.js"></script>
+</body>
+</html>

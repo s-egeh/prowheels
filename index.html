@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProWheels — Driven by Quality, Trusted for Performance</title>
+    <meta name="description" content="ProWheels — Tractors, Trucks, Trailers, Tyres, Batteries & Auto Services in Ghana. Contact +233540686932">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        /* PROWHEELS - MASTER STYLESHEET (EMBEDDED) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Merriweather:wght@700;900&display=swap');
+
+        :root {
+            --yellow: #ffd200;
+            --black: #111111;
+            --light-grey: #f7f7f7;
+            --text-color: #333;
+            --card-radius: 12px;
+            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.12);
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; font-family: var(--font-body); color: var(--text-color); background-color: #fff; line-height: 1.6; scroll-behavior: smooth; }
+        a { color: var(--black); text-decoration: none; transition: color 0.2s ease-in-out; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+        /* Header & Navigation */
+        .topbar { background: var(--black); color: var(--yellow); padding: 8px 16px; font-size: 14px; text-align: center; }
+        .topbar a { color: #fff; font-weight: 500; }
+        header { position: sticky; top: 0; z-index: 1000; background: #ffffff; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06); transition: padding 0.4s ease, background-color 0.3s ease; }
+        header .nav { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { height: 48px; width: 48px; border-radius: 6px; transition: height 0.4s ease, width 0.4s ease; }
+        .brand-name { font-weight: 800; color: var(--black); }
+        .brand-tagline { font-size: 12px; color: #666; }
+        nav ul { display: flex; gap: 24px; align-items: center; list-style: none; margin: 0; padding: 0; }
+        nav li { position: relative; }
+        nav a { font-weight: 500; position: relative; padding: 8px 0; }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--yellow); transition: width 0.3s ease; }
+        nav a:hover::after { width: 100%; }
+        .dropdown { background: #fff; border-radius: 8px; box-shadow: var(--shadow); position: absolute; top: 45px; left: -16px; min-width: 240px; padding: 8px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; }
+        nav li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown a { display: block; padding: 10px 12px; border-radius: 6px; }
+        .dropdown a::after { display: none; }
+        .dropdown a:hover { background: var(--light-grey); color: var(--black); }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .cta { background: var(--yellow); color: var(--black); padding: 10px 18px; border-radius: 8px; font-weight: 700; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+        /* Hero Section */
+        .hero { position: relative; height: 60vh; min-height: 450px; overflow: hidden; color: #fff; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .slide { position: absolute; inset: 0; background-size: cover; background-position: center; transition: opacity 1.2s ease-in-out, transform 6s ease-out; opacity: 0; transform: scale(1.1); }
+        .slide.active { opacity: 1; transform: scale(1); }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; max-width: 920px; padding: 24px; }
+        .hero h1 { font-family: var(--font-heading); font-size: 42px; color: #fff; margin: 0 0 12px; font-weight: 900; }
+        .hero p { margin: 0 0 24px; font-size: 18px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero .buttons { display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 24px; border-radius: 8px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s ease; background: var(--yellow); color: var(--black); }
+        .btn.secondary { background: transparent; border: 2px solid rgba(255, 255, 255, 0.4); color: #fff; }
+        .btn.secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.8); }
+        .dots { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.45); cursor: pointer; border: none; padding: 0; transition: background-color 0.3s ease; }
+        .dot.active { background: var(--yellow); }
+
+        /* Sections, Grids & Cards */
+        .section { padding: 80px 0; }
+        .section-highlight { background-color: var(--light-grey); }
+        .section h2 { font-family: var(--font-heading); font-weight: 900; margin: 0 0 48px; text-align: center; font-size: 36px; position: relative; }
+        .section h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--yellow); margin: 12px auto 0; border-radius: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .card { background: #fff; border-radius: var(--card-radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .card .imgwrap { height: 200px; overflow: hidden; background-color: #eee; }
+        .card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .card:hover img { transform: scale(1.05); }
+        .card .body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+        .card h3 { font-family: var(--font-heading); margin: 0 0 8px; font-size: 20px; }
+        .card p { flex: 1; margin: 0 0 16px; font-size: 15px; line-height: 1.5; }
+        .card .foot { margin-top: auto; }
+        .smallbtn { background: var(--black); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; display: inline-block; transition: background-color 0.2s ease; }
+        .smallbtn:hover { background-color: #333; }
+
+        /* "Why Choose Us" Section */
+        .why-choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .why-choose-grid img { width: 100%; border-radius: var(--card-radius); box-shadow: var(--shadow-hover); }
+        .why-choose-grid ul { list-style: none; padding-left: 0; margin-top: 24px; }
+        .why-choose-grid li { padding-left: 30px; margin-bottom: 16px; position: relative; font-size: 16px; }
+        .why-choose-grid li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--yellow); font-weight: bold; font-size: 20px; }
+        
+        /* "Core Values" Section */
+        .mission-vision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .mv-card { background: #fff; padding: 32px; border-radius: var(--card-radius); box-shadow: var(--shadow); text-align: center; }
+        .mv-card .icon { font-size: 40px; color: var(--yellow); margin-bottom: 16px; }
+        .mv-card h3 { font-family: var(--font-heading); margin: 0 0 12px; font-size: 24px; }
+
+        /* "Testimonials" Section */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .testimonial-card { background: #fff; padding: 32px; border-radius: var(--card-radius); box-shadow: var(--shadow); position: relative; }
+        .testimonial-card::before { content: '“'; font-family: var(--font-heading); font-size: 100px; color: var(--yellow); position: absolute; top: -20px; left: 10px; opacity: 0.3; line-height: 1; }
+        .testimonial-card p { margin: 0 0 16px; font-style: italic; position: relative; z-index: 1; }
+        .testimonial-card .author { font-weight: 700; font-style: normal; text-align: right; display: block; }
+        
+        /* "Valued Clients" Section */
+        .clients-wrapper { overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .clients-strip { display: flex; gap: 60px; animation: scroll-logos 40s linear infinite; }
+        .clients-wrapper:hover .clients-strip { animation-play-state: paused; }
+        .client-logo { width: 150px; height: 80px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s ease; }
+        .client-logo:hover img { filter: grayscale(0%); opacity: 1; }
+        @keyframes scroll-logos { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* "Contact & Map" Section */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .contact-card { background: #fff; padding: 32px; border-radius: 10px; box-shadow: var(--shadow); height: 100%; }
+        .map { padding: 0 !important; overflow: hidden; min-height: 400px; }
+        .map iframe { width: 100%; height: 100%; border: none; }
+        .contact-card h3, .contact-card h4 { font-family: var(--font-heading); margin-top: 0; }
+        .contact-form { display: flex; flex-direction: column; gap: 16px; }
+        .form-row { display: flex; gap: 16px; }
+        .form-input, .form-textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; font-family: var(--font-body); box-sizing: border-box; }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--yellow); box-shadow: 0 0 5px rgba(255, 210, 0, 0.5); }
+        
+        /* Footer & Floating Elements */
+        .float-wa, .float-cart { position: fixed; right: 24px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-hover); z-index: 900; transition: transform 0.2s ease; }
+        .float-wa { bottom: 24px; background: var(--yellow); }
+        .float-cart { bottom: 96px; background: var(--black); color: #fff; font-size: 24px; }
+        .float-wa:hover, .float-cart:hover { transform: scale(1.1); }
+        footer { background: var(--black); color: #ccc; padding: 56px 0 40px; margin-top: 24px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; align-items: start; gap: 32px; }
+        footer a { color: #ccc; font-size: 15px; }
+        footer a:hover { color: var(--yellow); }
+        footer h4 { color: #fff; font-family: var(--font-heading); margin-bottom: 16px; font-size: 18px; }
+        .footer-logo { height: 56px; margin-bottom: 8px; }
+        .footer-links div, .footer-contact div { display: flex; flex-direction: column; gap: 8px; }
+        .copyright { font-size: 12px; margin-top: 24px; opacity: 0.7; grid-column: 1 / -1; text-align: center; }
+        .footer-map a { display: block; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .footer-map a:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+        .footer-map img { display: block; width: 100%; height: auto; }
+
+        /* Dark Mode */
+        .dark-mode-toggle { background: none; border: 1px solid #ddd; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; transition: background-color 0.3s ease, border-color 0.3s ease; }
+        .dark-mode-toggle:hover { background-color: var(--light-grey); }
+        .dark-mode-toggle .moon-icon { display: none; }
+        .dark-mode-toggle .sun-icon { display: block; }
+        body.dark-mode { --light-grey: #1a1a1a; --text-color: #e0e0e0; --shadow: 0 6px 18px rgba(0, 0, 0, 0.4); --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.6); background-color: #121212; }
+        body.dark-mode .dark-mode-toggle .moon-icon { display: block; }
+        body.dark-mode .dark-mode-toggle .sun-icon { display: none; }
+        body.dark-mode header, body.dark-mode .card, body.dark-mode .mv-card, body.dark-mode .testimonial-card, body.dark-mode .contact-card { background-color: #1e1e1e; }
+        body.dark-mode .brand-name, body.dark-mode a { color: #fff; }
+        body.dark-mode a:hover { color: var(--yellow); }
+        body.dark-mode .brand-tagline { color: #888; }
+        body.dark-mode .dropdown { background-color: #2a2a2a; }
+        body.dark-mode .dropdown a:hover { background-color: #333; }
+        body.dark-mode .section-highlight { background-color: #181818; }
+        body.dark-mode footer { background-color: #0a0a0a; }
+
+        /* Advanced JS Features Styling */
+        header.scrolled { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); padding-top: 5px; padding-bottom: 5px; }
+        header.scrolled .brand img { height: 40px; width: 40px; }
+        body.dark-mode header.scrolled { background-color: #1e1e1e; }
+        .cursor { position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.2s ease-out, opacity 0.3s ease; }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--yellow); left: -4px; top: -4px; }
+        .cursor-follower { width: 40px; height: 40px; border: 2px solid var(--yellow); left: -20px; top: -20px; transition: transform 0.4s ease-out, opacity 0.3s ease, width 0.4s ease, height 0.4s ease; }
+        body.cursor-grow .cursor-follower { transform: scale(1.5); border-color: rgba(255, 210, 0, 0.5); }
+        .back-to-top { position: fixed; bottom: 24px; right: -80px; width: 50px; height: 50px; background-color: var(--yellow); color: var(--black); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-hover); cursor: pointer; z-index: 900; opacity: 0; font-size: 24px; transition: opacity 0.4s ease, right 0.5s ease; }
+        .back-to-top.show { opacity: 1; right: 24px; }
+        .back-to-top:hover { transform: scale(1.1); }
+        .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .why-choose-grid, .mission-vision-grid, .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-about, .footer-map { grid-column: 1 / -1; }
+        }
+        @media (max-width: 768px) {
+            .section { padding: 64px 0; }
+            .section h2 { font-size: 32px; }
+            .hero h1 { font-size: 32px; }
+            header .nav { flex-wrap: wrap; justify-content: space-between; }
+            nav { order: 3; width: 100%; margin-top: 16px; }
+            nav ul { justify-content: space-around; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .topbar { font-size: 12px; }
+            .brand-text { display: none; }
+            .form-row { flex-direction: column; }
+        }
+        @media (pointer: coarse) {
+          .cursor { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="container">Call / WhatsApp: <a href="tel:+233540686932">+233 54 068 6932</a>   |   <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a></div>
+    </div>
+    <header>
+        <div class="container nav">
+            <a href="index.html" class="brand">
+                <img src="prowheels.jpg" alt="ProWheels logo">
+                <div class="brand-text">
+                    <div class="brand-name">ProWheels</div>
+                    <div class="brand-tagline">Driven by Quality, Trusted for Performance.</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li>
+                        <a href="#">Products ▾</a>
+                        <div class="dropdown">
+                            <a href="products/massey-ferguson.html">Massey Ferguson Tractors</a>
+                            <a href="products/daf-trucks.html">DAF Trucks</a>
+                            <a href="products/semi-trailers.html">Semi-Trailers</a>
+                            <a href="products/tyres.html">Tyres</a>
+                            <a href="products/batteries.html">Batteries</a>
+                            <a href="products/tankers.html">Tankers</a>
+                            <a href="products/lubricants.html">Lubricants</a>
+                            <a href="products/auto-services.html">Auto Services</a>
+                            <a href="products/truck-insurance.html">Truck Insurance</a>
+                        </div>
+                    </li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <a class="cta" href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-label="ProWheels hero">
+            <div id="slides"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Your Partner in Agriculture, Logistics & Transportation</h1>
+                <p id="hero-text-placeholder"></p>
+                <div class="buttons">
+                    <a class="btn" href="#products">Explore Products</a>
+                    <a class="btn secondary" href="#contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="dots" id="dots"></div>
+        </section>
+
+        <section id="products" class="section">
+            <div class="container">
+                <h2>Explore Our Products & Services</h2>
+                <div class="grid">
+                    <article class="card">
+                        <div class="imgwrap"><img src="masseyferguson.jpg" alt="Massey Ferguson Tractors"></div>
+                        <div class="body">
+                            <h3>Massey Ferguson Tractors</h3>
+                            <p>Reliable and high-performance Massey Ferguson tractors built for durability, efficiency, and smooth operation.</p>
+                            <div class="foot"><a class="smallbtn" href="products/massey-ferguson.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="daftruck.jpg" alt="DAF Trucks"></div>
+                        <div class="body">
+                            <h3>DAF Trucks (New & Used)</h3>
+                            <p>Top-quality DAF trucks from Europe, engineered for power, comfort, and long-lasting performance.</p>
+                            <div class="foot"><a class="smallbtn" href="products/daf-trucks.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="trailer.jpg" alt="Semi-Trailers & Tankers"></div>
+                        <div class="body">
+                            <h3>Semi-Trailers & Tankers</h3>
+                            <p>Durable and high-capacity semi-trailers and tankers designed for reliable transport and heavy loads.</p>
+                            <div class="foot"><a class="smallbtn" href="products/semi-trailers.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="tyres.jpg" alt="Tyres"></div>
+                        <div class="body">
+                            <h3>Tyres – All Major Brands</h3>
+                            <p>Premium tyres from trusted global brands, built for durability, traction, and performance on all terrains.</p>
+                            <div class="foot"><a class="smallbtn" href="products/tyres.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="battery.jpg" alt="Batteries"></div>
+                        <div class="body">
+                            <h3>Automotive Batteries</h3>
+                            <p>High-performance batteries from brands like Bosch & Eco Power, engineered for long life and dependable starting power.</p>
+                            <div class="foot"><a class="smallbtn" href="products/batteries.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="tankers.jpg" alt="Tankers"></div>
+                        <div class="body">
+                            <h3>Fuel & Water Tankers</h3>
+                            <p>Robust and high-capacity tankers designed for safe and efficient transport of liquids, built to international standards.</p>
+                            <div class="foot"><a class="smallbtn" href="products/tankers.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="lubricant.jpg" alt="Lubricants"></div>
+                        <div class="body">
+                            <h3>Lubricants & Engine Oils</h3>
+                            <p>High-quality lubricants that enhance performance, reduce friction, and extend the lifespan of engines and machinery.</p>
+                            <div class="foot"><a class="smallbtn" href="products/lubricants.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="imgwrap"><img src="tyreservices.jpg" alt="Auto Services"></div>
+                        <div class="body">
+                            <h3>Auto Services</h3>
+                            <p>Comprehensive auto care including precision alignment, tyre fitting, AC refills, and more to keep your vehicle running smoothly.</p>
+                            <div class="foot"><a class="smallbtn" href="services.html">Find Out More</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-highlight">
+            <div class="container">
+                <h2>Why Choose ProWheels Africa?</h2>
+                <div class="why-choose-grid">
+                    <div>
+                        <p>At ProWheels, we provide more than just products; we deliver comprehensive solutions tailored to the unique demands of Ghana's agricultural and transportation sectors.</p>
+                        <ul>
+                            <li><strong>Maximum Uptime & Reliability:</strong> Our products are sourced for their durability, ensuring your fleet and machinery spend more time working and less time in the shop.</li>
+                            <li><strong>Expert Guidance & Support:</strong> Our experienced team provides professional advice to help you select the right equipment for your specific needs, maximizing your return on investment.</li>
+                            <li><strong>Genuine Parts & Quality Service:</strong> We guarantee authentic parts and expert maintenance services, protecting your assets and ensuring long-term performance.</li>
+                            <li><strong>Strategic Fleet Management:</strong> We offer tailored maintenance programs that reduce operational costs, prevent costly breakdowns, and keep your business moving forward.</li>
+                            <li><strong>Commitment to Local Growth:</strong> We are dedicated to empowering local businesses by providing the essential tools and support for success in Africa’s growing economy.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="prowheelsimage.webp" alt="ProWheels Office Front">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Our Core Values</h2>
+                <div class="mission-vision-grid">
+                    <div class="mv-card">
+                        <div class="icon">👁️</div>
+                        <h3>Our Vision</h3>
+                        <p>To drive Ghana’s growth with trusted vehicles and solutions, becoming a cornerstone for Africa’s future in transportation and agriculture.</p>
+                    </div>
+                    <div class="mv-card">
+                        <div class="icon">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>To deliver superior quality tractors, trucks, trailers, tyres, and automotive services with unmatched reliability and value—right here in Ghana.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-highlight">
+            <div class="container">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p>“ProWheels supplied us with dependable Massey Ferguson tractors that have significantly improved our farm's output. Their service is excellent and professional.”</p>
+                        <span class="author">— K. Adu, Farmer</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>“The DAF truck we purchased has been a workhorse for our logistics company. Great quality and the after-sales support is top-notch. Highly recommend.”</p>
+                        <span class="author">— S. Mensah, Logistics Manager</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>“Fast, reliable tyre fitting and alignment services. Their team is knowledgeable and helped us choose the right Goodyear tyres for our entire fleet.”</p>
+                        <span class="author">— A. Boateng, Transport Co.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Our Valued Clients</h2>
+                <div class="clients-wrapper">
+                    <div class="clients-strip" id="clients-strip">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-highlight">
+            <div class="container">
+                <h2>Contact & Location</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Get in Touch</h3>
+                        <p><strong>Address:</strong> Harbor roundabout, Community 1, Tema — J2Q2+MVX, Krakue Rd</p>
+                        <p><strong>Phone / WhatsApp:</strong> <a href="tel:+233540686932">+233 54 068 6932</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a></p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+                        <p>“At ProWheels Africa, we are committed to powering Ghana’s growth through reliable agricultural and transport solutions.”</p>
+                        <strong style="font-size: 14px;">— The ProWheels Team</strong>
+                    </div>
+                    <div class="map contact-card" style="margin-top:18px; padding:0; height: 400px;">
+  <iframe
+    src="https://www.google.com/maps?q=Harbor+roundabout,+Community+1,+Tema,+Ghana&output=embed"
+    width="100%" height="100%"
+    style="border:0;" loading="lazy" allowfullscreen>
+  </iframe>
+</div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="prowheels.jpg" alt="ProWheels" class="footer-logo">
+                    <p>Driven by Quality, Trusted for Performance. Your partner in agriculture, logistics, and transportation in Ghana.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <div>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Services</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div>
+                        <a href="tel:+233540686932">+233 54 068 6932</a>
+                        <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a>
+                    </div>
+                </div>
+                <div class="map contact-card" style="margin-top:18px; padding:0; height: 400px;">
+  <iframe
+    src="https://www.google.com/maps?q=Harbor+roundabout,+Community+1,+Tema,+Ghana&output=embed"
+    width="100%" height="100%"
+    style="border:0;" loading="lazy" allowfullscreen>
+  </iframe>
+</div>
+
+            </div>
+            <p class="copyright">© 2025 ProWheels Africa</p>
+        </div>
+    </footer>
+    
+    <a class="float-wa" href="https://wa.me/233540686932" target="_blank" aria-label="WhatsApp">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.373 0 .001 5.373 0 12c0 2.117.553 4.175 1.6 5.99L0 24l6.28-1.64A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.194-1.247-6.19-3.48-8.52z" fill="#111" /><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.672.149-.198.297-.768.966-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.133-.131.297-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.371-.025-.52-.074-.148-.672-1.62-.921-2.218-.242-.583-.487-.503-.672-.512l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.018-1.04 2.479 1.063 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487 2.982 1.288 2.982.858 3.517.806.537-.049 1.758-.717 2.006-1.406.248-.688.248-1.279.173-1.406-.074-.124-.272-.198-.57-.347z" fill="#ffd200" /></svg>
+    </a>
+    <a class="float-cart" href="cart.html" aria-label="Cart">🛒</a>
+    <div class="back-to-top" aria-label="Go to top of page">&#8593;</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            /** Theme Management */
+            const initThemeToggle = () => {
+                const toggleButton = document.getElementById('dark-mode-toggle');
+                if (!toggleButton) return;
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                let currentTheme = localStorage.getItem('prowheels-theme') || (prefersDark ? 'dark' : 'light');
+                const applyTheme = (theme) => document.body.classList.toggle('dark-mode', theme === 'dark');
+                applyTheme(currentTheme);
+                toggleButton.addEventListener('click', () => {
+                    currentTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+                    localStorage.setItem('prowheels-theme', currentTheme);
+                    applyTheme(currentTheme);
+                });
+            };
+
+            /** Hero Slideshow (Homepage Only) */
+            const initHeroSlider = () => {
+                const slidesRoot = document.getElementById('slides');
+                const dotsRoot = document.getElementById('dots');
+                const heroTextEl = document.getElementById('hero-text-placeholder');
+                if (!slidesRoot || !dotsRoot || !heroTextEl) return;
+                const slidesData = [ { img: 'daftruck.jpg', text: 'Powerful and reliable DAF Trucks from Europe.' }, { img: 'masseyferguson.jpg', text: 'High-quality Massey Ferguson Tractors from Japan.' }, { img: 'trailer.jpg', text: 'Strong and dependable Semi-Trailers for heavy transport.' }, { img: 'tyres.jpg', text: 'Premium Tyres from top brands for maximum performance.' }, ];
+                let currentSlide = 0;
+                const slideElements = [], dotElements = [];
+                let autoplayInterval = null;
+                slidesData.forEach((slideData, i) => {
+                    const div = document.createElement('div');
+                    div.className = 'slide';
+                    div.style.backgroundImage = `url(${slideData.img})`;
+                    slidesRoot.appendChild(div);
+                    slideElements.push(div);
+                    const dot = document.createElement('button');
+                    dot.className = 'dot';
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    dot.onclick = () => goToSlide(i);
+                    dotsRoot.appendChild(dot);
+                    dotElements.push(dot);
+                });
+                const showSlide = (index) => {
+                    slideElements.forEach((el, idx) => el.classList.toggle('active', idx === index));
+                    dotElements.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+                    heroTextEl.textContent = slidesData[index].text;
+                    currentSlide = index;
+                };
+                const startAutoplay = () => { autoplayInterval = setInterval(() => { const nextIndex = (currentSlide + 1) % slideElements.length; showSlide(nextIndex); }, 5000); };
+                const goToSlide = (index) => { showSlide(index); clearInterval(autoplayInterval); startAutoplay(); };
+                showSlide(0);
+                startAutoplay();
+            };
+
+            /** Client Logo Scroller */
+            const initClientScroller = () => {
+                const strip = document.getElementById('clients-strip');
+                if (!strip) return;
+                const logos = [ 'gpha.png', 'sapholda.png', 'movis.jpg', 'trustlink.png', 'bajfreight.png', 'tematerminal.png', 'amaristerminal.png', 'medlog.png' ];
+                const allLogos = [...logos, ...logos]; // Duplicate for seamless loop
+                allLogos.forEach(logoSrc => {
+                    const div = document.createElement('div');
+                    div.className = 'client-logo';
+                    const img = document.createElement('img');
+                    img.src = logoSrc;
+                    img.alt = logoSrc.split('.')[0];
+                    img.loading = 'lazy';
+                    div.appendChild(img);
+                    strip.appendChild(div);
+                });
+            };
+
+            /** Sticky Header */
+            const initStickyHeader = () => {
+                const header = document.querySelector('header');
+                if (!header) return;
+                window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+            };
+
+            /** Custom Cursor */
+            const initCustomCursor = () => {
+                const cursorDot = document.createElement('div');
+                cursorDot.className = 'cursor cursor-dot';
+                document.body.appendChild(cursorDot);
+                const cursorFollower = document.createElement('div');
+                cursorFollower.className = 'cursor cursor-follower';
+                document.body.appendChild(cursorFollower);
+                window.addEventListener('mousemove', e => {
+                    requestAnimationFrame(() => {
+                        cursorDot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+                        cursorFollower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+                    });
+                });
+                const interactiveElements = document.querySelectorAll('a, button, .card');
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
+                    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
+                });
+            };
+
+            /** Scroll Effects */
+            const initScrollEffects = () => {
+                const backToTopButton = document.querySelector('.back-to-top');
+                if (backToTopButton) {
+                    backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+                    window.addEventListener('scroll', () => backToTopButton.classList.toggle('show', window.scrollY > window.innerHeight), { passive: true });
+                }
+                const animatedElements = document.querySelectorAll('.card, .mv-card, .testimonial-card, .why-choose-grid > div');
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    animatedElements.forEach(el => {
+                        el.classList.add('animate-on-scroll');
+                        observer.observe(el);
+                    });
+                }
+            };
+            
+            // --- Initialize All Scripts ---
+            initThemeToggle();
+            initHeroSlider();
+            initClientScroller();
+            initStickyHeader();
+            initCustomCursor();
+            initScrollEffects();
+        });
+    </script>
+</body>
+</html>
