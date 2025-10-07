@@ -192,30 +192,31 @@ header.scrolled .brand img { height: 40px; width: 40px; }
 .cursor-dot { width: 8px; height: 8px; background-color: var(--yellow); left: -4px; top: -4px; }
 .cursor-follower { width: 40px; height: 40px; border: 2px solid var(--yellow); left: -20px; top: -20px; transition: transform 0.4s ease-out, opacity 0.3s ease, width 0.4s ease, height 0.4s ease; }
 body.cursor-grow .cursor-follower { transform: scale(1.5); border-color: rgba(255, 210, 0, 0.5); }
-.back-to-top { 
-    position: fixed; 
+.back-to-top {
+    position: fixed;
     bottom: 96px; /* Corrected value */
-    right: -80px; 
-    width: 50px; 
-    height: 50px; 
-    background-color: var(--yellow); 
-    color: var(--black); 
-    border: none; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    box-shadow: var(--shadow-hover); 
-    cursor: pointer; 
-    z-index: 900; 
-    opacity: 0; 
-    font-size: 24px; 
-    transition: opacity 0.4s ease, right 0.5s ease; 
+    right: -80px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--yellow);
+    color: var(--black);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-hover);
+    cursor: pointer;
+    z-index: 900;
+    opacity: 0;
+    font-size: 24px;
+    transition: opacity 0.4s ease, right 0.5s ease; /* changed from left to right */
 }
 .back-to-top.show { opacity: 1; right: 24px; }
 .back-to-top:hover { transform: scale(1.1); }
 .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
 /* 8. DARK MODE THEME
 -------------------------------------------------- */
 .dark-mode-toggle { background: none; border: 1px solid #ddd; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; padding: 0; transition: background-color 0.3s ease, border-color 0.3s ease; }
@@ -260,7 +261,7 @@ body.dark-mode .cart-page .page-hero { background-image: linear-gradient(rgba(0,
 /* Full-width map section */
 .map-section-full {
     width: 100%;
-    height: 450px; 
+    height: 450px;
     margin-top: 2rem;
 }
 .map-section-full iframe {
@@ -272,6 +273,13 @@ body.dark-mode .cart-page .page-hero { background-image: linear-gradient(rgba(0,
 /* 9. RESPONSIVE MEDIA QUERIES
 -------------------------------------------------- */
 @media (max-width: 992px) {
+    /* Adjust nav spacing on tablets to prevent crowding and wrapping too early */
+    nav ul {
+        gap: 16px;
+    }
+    nav a {
+        font-size: 15px;
+    }
     .why-choose-grid, .mission-vision-grid, .contact-grid, .about-grid, .advantage-grid, .product-intro-grid {
         grid-template-columns: 1fr;
     }
@@ -297,17 +305,39 @@ body.dark-mode .cart-page .page-hero { background-image: linear-gradient(rgba(0,
     .hero h1 {
         font-size: 32px;
     }
+    /* This section completely restructures the header for mobile devices */
     header .nav {
         flex-wrap: wrap;
         justify-content: space-between;
+        row-gap: 16px; /* Adds space between the logo/CTA row and the nav links below */
     }
     nav {
-        order: 3;
-        width: 100%;
-        margin-top: 16px;
+        order: 3; /* Pushes the navigation to the next line */
+        width: 100%; /* Makes the navigation take the full width */
+        margin-top: 0; /* The new row-gap handles the spacing */
     }
     nav ul {
-        justify-content: space-around;
+        flex-direction: column; /* Stacks the navigation links vertically */
+        align-items: center; /* Centers the text of the links */
+        gap: 0; /* Resets the horizontal gap */
+    }
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+    nav a {
+        display: block; /* Makes the entire area of the link clickable */
+        padding: 12px 0; /* Adds vertical space to make links easier to tap */
+        border-bottom: 1px solid #f0f0f0; /* Adds a separator line */
+    }
+    nav a::after {
+        display: none; /* Hides the yellow underline animation on mobile */
+    }
+    body.dark-mode nav a {
+        border-bottom-color: #333; /* Separator color for dark mode */
+    }
+    nav li:last-child a {
+        border-bottom: none; /* Removes separator from the very last link */
     }
     .footer-grid {
         grid-template-columns: 1fr;
