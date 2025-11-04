@@ -1,581 +1,294 @@
 <!doctype html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>ProWheels — Driven by Quality, Trusted for Performance</title>
-
     <meta name="description" content="ProWheels — Tractors, Trucks, Trailers, Tyres, Batteries & Auto Services in Ghana. Contact +233540686932">
-
     <link rel="icon" type="image/png" href="favicon.png">
-
     
-
     <link rel="stylesheet" href="style.css">
-
-
 
 </head>
 
-
-
 <body>
-
     <div class="topbar">
-
         <div class="container">Call / WhatsApp: <a href="tel:+233540686932">+233 54 068 6932</a>   |   <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a></div>
-
     </div>
-
     <header>
-
     <div class="container nav">
-
         <a href="index.html" class="brand">
-
-            <img src="prowheels.png" alt="ProWheels logo">
-
+            <!-- THIS IS THE ONLY CHANGED LINE -->
+            <img src="prowheels.png" alt="ProWheels logo" style="height: 55px; width: auto;">
+            <!-- END OF CHANGE -->
             <div class="brand-text">
-
                 <div class="brand-name">ProWheels</div>
-
                 <div class="brand-tagline">Driven by Quality, Trusted for Performance.</div>
-
             </div>
-
         </a>
-
         
-
         <button class="nav-toggle" aria-label="toggle navigation">
-
             <span class="hamburger"></span>
-
         </button>
 
-
-
         <nav class="nav__menu">
-
             <ul class="nav__list">
-
                 <li><a href="index.html">Home</a></li>
-
                 <li class="nav__dropdown">
-
                     <a href="#">Products ▾</a>
-
                     <div class="dropdown">
-
                         <a href="products/massey-ferguson.html">Massey Ferguson Tractors</a>
-
                         <a href="products/daf-trucks.html">DAF Trucks</a>
-
                         <a href="products/semi-trailers.html">Semi-Trailers</a>
-
                         <a href="products/tyres.html">Tyres</a>
-
                         <a href="products/batteries.html">Batteries</a>
-
                         <a href="products/tankers.html">Tankers</a>
-
                         <a href="products/lubricants.html">Lubricants</a>
-
                         <a href="products/auto-services.html">Auto Services</a>
-
                         <a href="products/truck-insurance.html">Truck Insurance</a>
-
                     </div>
-
                 </li>
-
                 <li><a href="services.html">Services</a></li>
-
                 <li><a href="about.html">About Us</a></li>
-
                 <li><a href="contact.html">Contact</a></li>
-
             </ul>
-
         </nav>
 
-
-
         <div class="header-actions">
-
             <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
-
                 <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-
                 <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-
             </button>
-
             <a class="cta" href="contact.html">Get in Touch</a>
-
         </div>
-
     </div>
-
 </header>
 
-
-
     <main>
-
         <section class="hero" aria-label="ProWheels hero">
-
             <div id="slides"></div>
-
             <div class="hero-overlay"></div>
-
             <div class="hero-content">
-
                 <h1>Your Partner in Agriculture, Logistics & Transportation</h1>
-
                 <p id="hero-text-placeholder"></p>
-
                 <div class="buttons">
-
                     <a class="btn" href="#products">Explore Products</a>
-
                     <a class="btn secondary" href="#contact">Contact Us</a>
-
                 </div>
-
             </div>
-
             <div class="dots" id="dots"></div>
-
         </section>
-
-
 
         <section id="products" class="section">
-
             <div class="container">
-
                 <h2>Explore Our Products & Services</h2>
-
                 <div class="grid">
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="masseyferguson.jpg" alt="Massey Ferguson Tractors"></div>
-
                         <div class="body">
-
                             <h3>Massey Ferguson Tractors</h3>
-
                             <p>Reliable and high-performance Massey Ferguson tractors built for durability, efficiency, and smooth operation.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/massey-ferguson.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="daftruck.jpg" alt="DAF Trucks"></div>
-
                         <div class="body">
-
                             <h3>DAF Trucks (New & Used)</h3>
-
                             <p>Top-quality DAF trucks from Europe, engineered for power, comfort, and long-lasting performance.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/daf-trucks.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="trailer.jpg" alt="Semi-Trailers & Tankers"></div>
-
                         <div class="body">
-
                             <h3>Semi-Trailers & Tankers</h3>
-
                             <p>Durable and high-capacity semi-trailers and tankers designed for reliable transport and heavy loads.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/semi-trailers.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="tyres.jpg" alt="Tyres"></div>
-
                         <div class="body">
-
                             <h3>Tyres – All Major Brands</h3>
-
                             <p>Premium tyres from trusted global brands, built for durability, traction, and performance on all terrains.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/tyres.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="battery.jpg" alt="Batteries"></div>
-
                         <div class="body">
-
                             <h3>Automotive Batteries</h3>
-
                             <p>High-performance batteries from brands like Bosch & Eco Power, engineered for long life and dependable starting power.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/batteries.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="tankers.jpg" alt="Tankers"></div>
-
                         <div class="body">
-
                             <h3>Fuel & Water Tankers</h3>
-
                             <p>Robust and high-capacity tankers designed for safe and efficient transport of liquids, built to international standards.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/tankers.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="lubricant.jpg" alt="Lubricants"></div>
-
                         <div class="body">
-
                             <h3>Lubricants & Engine Oils</h3>
-
                             <p>High-quality lubricants that enhance performance, reduce friction, and extend the lifespan of engines and machinery.</p>
-
                             <div class="foot"><a class="smallbtn" href="products/lubricants.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                     <article class="card">
-
                         <div class="imgwrap"><img src="tyreservices.jpg" alt="Auto Services"></div>
-
-                        <div class="body">
-
+                        <div classs="body">
                             <h3>Auto Services</h3>
-
                             <p>Comprehensive auto care including precision alignment, tyre fitting, AC refills, and more to keep your vehicle running smoothly.</p>
-
                             <div class="foot"><a class="smallbtn" href="services.html">Find Out More</a></div>
-
                         </div>
-
                     </article>
-
                 </div>
-
             </div>
-
         </section>
 
-
-
         <section class="section section-highlight">
-
             <div class="container">
-
                 <h2>Why Choose ProWheels Africa?</h2>
-
                 <div class="why-choose-grid">
-
                     <div>
-
                         <p>At ProWheels, we provide more than just products; we deliver comprehensive solutions tailored to the unique demands of Ghana's agricultural and transportation sectors.</p>
-
                         <ul>
-
                             <li><strong>Maximum Uptime & Reliability:</strong> Our products are sourced for their durability, ensuring your fleet and machinery spend more time working and less time in the shop.</li>
-
                             <li><strong>Expert Guidance & Support:</strong> Our experienced team provides professional advice to help you select the right equipment for your specific needs, maximizing your return on investment.</li>
-
                             <li><strong>Genuine Parts & Quality Service:</strong> We guarantee authentic parts and expert maintenance services, protecting your assets and ensuring long-term performance.</li>
-
                             <li><strong>Strategic Fleet Management:</strong> We offer tailored maintenance programs that reduce operational costs, prevent costly breakdowns, and keep your business moving forward.</li>
-
                             <li><strong>Commitment to Local Growth:</strong> We are dedicated to empowering local businesses by providing the essential tools and support for success in Africa’s growing economy.</li>
-
                         </ul>
-
                     </div>
-
                     <div>
-
                         <img src="prowheelsimage.webp" alt="ProWheels Office Front">
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <section class="section">
-
             <div class="container">
-
                 <h2>Our Core Values</h2>
-
                 <div class="mission-vision-grid">
-
                     <div class="mv-card">
-
                         <div class="icon">👁️</div>
-
                         <h3>Our Vision</h3>
-
                         <p>To drive Ghana’s growth with trusted vehicles and solutions, becoming a cornerstone for Africa’s future in transportation and agriculture.</p>
-
                     </div>
-
                     <div class="mv-card">
-
                         <div class="icon">🎯</div>
-
                         <h3>Our Mission</h3>
-
                         <p>To deliver superior quality tractors, trucks, trailers, tyres, and automotive services with unmatched reliability and value—right here in Ghana.</p>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <section class="section section-highlight">
-
             <div class="container">
-
                 <h2>What Our Clients Say</h2>
-
                 <div class="testimonial-grid">
-
                     <div class="testimonial-card">
-
                         <p>“ProWheels supplied us with dependable Massey Ferguson tractors that have significantly improved our farm's output. Their service is excellent and professional.”</p>
-
                         <span class="author">— K. Adu, Farmer</span>
-
                     </div>
-
                     <div class="testimonial-card">
-
                         <p>“The DAF truck we purchased has been a workhorse for our logistics company. Great quality and the after-sales support is top-notch. Highly recommend.”</p>
-
                         <span class="author">— S. Mensah, Logistics Manager</span>
-
                     </div>
-
                     <div class="testimonial-card">
-
                         <p>“Fast, reliable tyre fitting and alignment services. Their team is knowledgeable and helped us choose the right Goodyear tyres for our entire fleet.”</p>
-
                         <span class="author">— A. Boateng, Transport Co.</span>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <section class="section">
-
             <div class="container">
-
                 <h2>Our Valued Clients</h2>
-
                 <div class="clients-wrapper">
-
                     <div class="clients-strip" id="clients-strip">
-
                         </div>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <section id="contact" class="section section-highlight">
-
             <div class="container">
-
                 <h2>Contact & Location</h2>
-
                 <div class="contact-grid">
-
                     <div class="contact-card">
-
                         <h3>Get in Touch</h3>
-
                         <p><strong>Address:</strong> Harbor roundabout, Community 1, Tema — J2Q2+MVX, Krakue Rd</p>
-
                         <p><strong>Phone / WhatsApp:</strong> <a href="tel:+233540686932">+233 54 068 6932</a></p>
-
                         <p><strong>Email:</strong> <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a></p>
-
                         <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-
                         <p>“At ProWheels Africa, we are committed to powering Ghana’s growth through reliable agricultural and transport solutions.”</p>
-
                         <strong style="font-size: 14px;">— The ProWheels Team</strong>
-
                     </div>
-
                     <div class="map contact-card" style="margin-top:18px; padding:0; height: 400px;">
-
   <iframe
-
     src="https://www.google.com/maps?q=Harbor+roundabout,+Community+1,+Tema,+Ghana&output=embed"
-
     width="100%" height="100%"
-
     style="border:0;" loading="lazy" allowfullscreen>
-
   </iframe>
-
 </div>
 
-
-
                 </div>
-
             </div>
-
         </section>
-
     </main>
 
-
-
     <footer>
-
         <div class="container">
-
             <div class="footer-grid">
-
                 <div class="footer-about">
-
                     <img src="prowheels.jpg" alt="ProWheels" class="footer-logo">
-
                     <p>Driven by Quality, Trusted for Performance. Your partner in agriculture, logistics, and transportation in Ghana.</p>
-
                 </div>
-
                 <div class="footer-links">
-
                     <h4>Quick Links</h4>
-
                     <div>
-
                         <a href="index.html">Home</a>
-
                         <a href="about.html">About Us</a>
-
                         <a href="services.html">Services</a>
-
                         <a href="contact.html">Contact</a>
-
                     </div>
-
                 </div>
-
                 <div class="footer-contact">
-
                     <h4>Contact Us</h4>
-
                     <div>
-
                         <a href="tel:+233540686932">+233 54 068 6932</a>
-
                         <a href="mailto:prowheels21@gmail.com">prowheels21@gmail.com</a>
-
                     </div>
-
                 </div>
-
                 <div class="map contact-card" style="margin-top:18px; padding:0; height: 400px;">
-
   <iframe
-
     src="https://www.google.com/maps?q=Harbor+roundabout,+Community+1,+Tema,+Ghana&output=embed"
-
     width="100%" height="100%"
-
     style="border:0;" loading="lazy" allowfullscreen>
-
   </iframe>
-
 </div>
 
-
-
             </div>
-
             <p class="copyright">© 2025 ProWheels Africa</p>
-
         </div>
-
     </footer>
-
     
-
     <a class="float-wa" href="https://wa.me/233540686932" target="_blank" aria-label="WhatsApp">
-
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.373 0 .001 5.373 0 12c0 2.117.553 4.175 1.6 5.99L0 24l6.28-1.64A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12 0-3.194-1.247-6.19-3.48-8.52z" fill="#111" /><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.672.149-.198.297-.768.966-.942 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.133-.131.297-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.371-.025-.52-.074-.148-.672-1.62-.921-2.218-.242-.583-.487-.503-.672-.512l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.018-1.04 2.479 1.063 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487 2.982 1.288 2.982.858 3.517.806.537-.049 1.758-.717 2.006-1.406.248-.688.248-1.279.173-1.406-.074-.124-.272-.198-.57-.347z" fill="#ffd200" /></svg>
-
     </a>
-
     <a class="float-cart" href="cart.html" aria-label="Cart">🛒</a>
-
     <div class="back-to-top" aria-label="Go to top of page">↑</div>
 
-
-
     <script src="main.js" defer></script>
-
 </body>
-
 </html>
+
