@@ -361,4 +361,19 @@ body.dark-mode .cart-page .page-hero { background-image: linear-gradient(rgba(0,
   .cursor {
       display: none;
   }
+    /* --- Makes the header logo larger --- */
+
+header .brand img {
+  height: 55px;  /* Adjust this value up or down to your liking */
+  width: auto;   /* This automatically adjusts the width to keep the logo's shape */
+}
+
+/* You might also want to adjust the text next to it 
+   to stay vertically centered. If it looks off-center
+   after you resize the logo, add this code too.
+*/
+header .brand {
+  display: flex;
+  align-items: center; /* This vertically centers the logo and the text */
+}
 }
